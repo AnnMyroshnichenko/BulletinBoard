@@ -1,0 +1,121 @@
+﻿@model IEnumerable<BulletinBoardMVC.Models.AnnouncementViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Оголошення</h1>
+
+<p>
+    <a class="mb-3" asp-action="Create">Створити нове оголошення</a>
+</p>
+
+<!-- Filter Form -->
+<form asp-action="Index" method="get" class="mb-3">
+    <div class="mb-3">
+        <label for="category">Категорія:</label>
+        <select id="category" name="category">
+            <option value="">Всі</option>
+            @foreach (var cat in ViewBag.Categories)
+            {
+                <option value="@cat" selected="@(cat == ViewBag.SelectedCategory ? "selected" : null)">@cat</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="subcategory">Підкатегорія:</label>
+        <select id="subcategory" name="subcategory" disabled>
+            <option value="">Всі</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <input type="submit" value="Фільтрувати" />
+        <a asp-action="Index">Скинути фільтри</a>
+    </div>
+</form>
+
+<p>
+    Знайдено @Model.Count() оголошень
+    @if (!string.IsNullOrEmpty(ViewBag.SelectedCategory) || !string.IsNullOrEmpty(ViewBag.SelectedSubcategory))
+    {
+        <text>за фільтром: </text>
+        if (!string.IsNullOrEmpty(ViewBag.SelectedCategory))
+        {
+            <text>Категорія - @ViewBag.SelectedCategory</text>
+        }
+        if (!string.IsNullOrEmpty(ViewBag.SelectedSubcategory))
+        {
+            if (!string.IsNullOrEmpty(ViewBag.SelectedCategory))
+            {
+                <text>, </text>
+            }
+            <text>Підкатегорія - @ViewBag.SelectedSubcategory</text>
+        }
+    }
+    else
+    {
+        <text>без фільтра</text>
+    }
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Назва</th>
+            <th>Опис</th>
+            <th>Дата створення</th>
+            <th>Статус</th>
+            <th>Категорія</th>
+            <th>Підкатегорія</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                <td>@Html.DisplayFor(modelItem => item.Category)</td>
+                <td>@Html.DisplayFor(modelItem => item.SubCategory)</td>
+                <td>
+                    @Html.ActionLink("Редагувати", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Видалити", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    var categorySubcategories = @Html.Raw(ViewBag.CategorySubcategories);
+
+    function updateSubcategories() {
+        var category = document.getElementById("category").value;
+        var subcategorySelect = document.getElementById("subcategory");
+        subcategorySelect.innerHTML = '<option value="">Всі</option>';
+
+        if (category && categorySubcategories[category]) {
+            categorySubcategories[category].forEach(function(sub) {
+                var option = document.createElement("option");
+                option.value = sub;
+                option.text = sub;
+                subcategorySelect.appendChild(option);
+            });
+            subcategorySelect.disabled = false;
+        } else {
+            subcategorySelect.disabled = true;
+        }
+
+        var selectedSubcategory = "@ViewBag.SelectedSubcategory";
+        if (selectedSubcategory && subcategorySelect.querySelector('option[value="' + selectedSubcategory + '"]')) {
+            subcategorySelect.value = selectedSubcategory;
+        }
+    }
+
+    document.getElementById("category").addEventListener("change", updateSubcategories);
+
+    updateSubcategories();
+</script>

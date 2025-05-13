@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulletinBoardAPI", "BulletinBoard\BulletinBoardAPI.csproj", "{D69EACB2-AE44-48C5-8F22-FA9C3EA88C6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulletinBoardMVC", "BulletinBoardMVC\BulletinBoardMVC.csproj", "{F2FDC2EB-ED6E-4C37-906E-42E85EF55765}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D69EACB2-AE44-48C5-8F22-FA9C3EA88C6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D69EACB2-AE44-48C5-8F22-FA9C3EA88C6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D69EACB2-AE44-48C5-8F22-FA9C3EA88C6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D69EACB2-AE44-48C5-8F22-FA9C3EA88C6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2FDC2EB-ED6E-4C37-906E-42E85EF55765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2FDC2EB-ED6E-4C37-906E-42E85EF55765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2FDC2EB-ED6E-4C37-906E-42E85EF55765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2FDC2EB-ED6E-4C37-906E-42E85EF55765}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C88712A-C6A5-4128-9EC7-9EC218B994F2}
+	EndGlobalSection
+EndGlobal

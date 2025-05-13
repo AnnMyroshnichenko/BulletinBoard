@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "BulletinBoard\\BulletinBoardAPI.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "BulletinBoardMVC\\BulletinBoardMVC.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
